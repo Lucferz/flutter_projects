@@ -20,8 +20,3 @@ doc/api/
 *.js.deps
 *.js.map
 
-#Evitando cosas innecesarias
-*/.idea
-*.png
-*.jpg
-*.jpeg
