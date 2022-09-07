@@ -40,7 +40,7 @@ class _AmberBox extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Container(
       width: double.infinity,
-      height: size.height * 0.4,
+      height: size.height * 0.35,
       color: Colors.amber,
     );
   }
