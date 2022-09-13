@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_tp04/ui/input_decoration.dart';
 import 'package:login_tp04/widget/card_container.dart';
 import 'package:login_tp04/widget/widget.dart';
  
@@ -49,29 +50,42 @@ class _loginForm extends StatelessWidget {
             TextFormField(
               autocorrect: false,
               keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.lightBlue,
-                    width:2 ,
-                  ),
-                ),
-                hintText: 'alguien@email.com',
-                labelText: 'Correo Electronico',
-                labelStyle: TextStyle(color: Colors.black),
-                prefixIcon: Icon(
-                  Icons.alternate_email_sharp, color: 
-                  Colors.grey[800],
-                ),
-
+              decoration: InputDecorations.authInputDecoration(
+                hintText: "luis@email.com", 
+                labelText: "Correo Electronico",
+                prefixIcon: Icons.alternate_email_sharp,
+              ),
+            ),
+            SizedBox(height: 20,),
+            TextFormField(
+              autocorrect: false,
+              obscureText: true,
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecorations.authInputDecoration(
+                hintText: "MiContraseña", 
+                labelText: "Contraseña",
+                prefixIcon: Icons.lock,
+              ),
+            ),
+            SizedBox(height: 40,),
+            MaterialButton(
+              onPressed: () {
+                print('Presionado');
+              },
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              disabledColor: Colors.grey,
+              elevation: 0,
+              color: Colors.black,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 80, vertical: 15),
+                child: Text('Ingresar', style: TextStyle(color: Colors.white),),
               ),
             ),
           ],
-        )
-      ),
+        ),
+      )
     );
   }
 }
