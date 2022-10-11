@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_tp07/providers/login_form_provider.dart';
+import 'package:login_tp07/services/notification_service.dart';
 import 'package:login_tp07/services/services.dart';
 import 'package:login_tp07/ui/ui.dart';
 import 'package:login_tp07/widgets/widgets.dart';
@@ -121,6 +122,7 @@ class _LoginForm extends StatelessWidget {
                 if(errMsg == null){
                   Navigator.popAndPushNamed(context, 'home');
                 }else{
+                  NotificationService.shawnSnakbar(errMsg);
                   print(errMsg);
                   loginForm.isLoading = false;
                 }
