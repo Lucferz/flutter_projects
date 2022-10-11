@@ -9,7 +9,7 @@ class CardContainer extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 30),
       width: double.infinity,
-      height: 300,
+      //height: 300,
       decoration: _createCardShape(),
       child: this.child,
     );
