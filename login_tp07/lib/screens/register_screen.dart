@@ -5,8 +5,8 @@ import 'package:login_tp07/ui/ui.dart';
 import 'package:login_tp07/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +21,11 @@ class LoginScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(height:10),
-                    Text('Login', style: Theme.of(context).textTheme.headline4,),
+                    Text('Registro', style: Theme.of(context).textTheme.headline4,),
                     SizedBox(height: 30,),
                     ChangeNotifierProvider(
                       create: (context) => LoginFormProvider(),
-                      child: _LoginForm(),
+                      child: _RegisterForm(),
                     )
                   ],
                 ),
@@ -37,9 +37,9 @@ class LoginScreen extends StatelessWidget {
                   shape: MaterialStateProperty.all(StadiumBorder()),
                 ),
                 onPressed: () {
-                  Navigator.restorablePushReplacementNamed(context, 'register');
+                  Navigator.restorablePushReplacementNamed(context, 'login');
                 }, 
-                child:Text('¿Aun no tienes una cuenta? Crea una!', style: TextStyle( fontSize: 18, fontWeight: FontWeight.bold,),)
+                child: Text('¿Ya tienes una cuenta? Inicia Sesion', style: TextStyle( fontSize: 18, fontWeight: FontWeight.bold),)
               ),
             ],
           ),
@@ -49,8 +49,8 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-class _LoginForm extends StatelessWidget {
-  const _LoginForm({Key? key}) : super(key: key);
+class _RegisterForm extends StatelessWidget {
+  const _RegisterForm({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +104,7 @@ class _LoginForm extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 80, vertical: 15),
                 child: Text(
-                  loginForm.isLoading? 'Espere':'Iniciar Sesion' ,
+                  loginForm.isLoading? 'Espere':'Registrarme!' ,
                   style: TextStyle(
                     color: Colors.white, 
                     fontSize: 18
@@ -112,12 +112,13 @@ class _LoginForm extends StatelessWidget {
                 ),
               ),
               onPressed:loginForm.isLoading?null: () async {
+                
                 FocusScope.of(context).unfocus();
                 final authService = Provider.of<AuthService>(context, listen: false);
 
                 if(!loginForm.isValidForm())return null;
                 loginForm.isLoading = true;
-                final String? errMsg = await authService.login(loginForm.email, loginForm.password);
+                final String? errMsg = await authService.createUser(loginForm.email, loginForm.password);
                 if(errMsg == null){
                   Navigator.popAndPushNamed(context, 'home');
                 }else{

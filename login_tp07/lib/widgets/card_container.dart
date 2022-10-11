@@ -17,7 +17,7 @@ class CardContainer extends StatelessWidget {
 
   BoxDecoration _createCardShape() {
     return BoxDecoration(
-      color: Colors.teal[200],
+      color: Colors.amber[300],
       borderRadius: BorderRadius.circular(25),
       boxShadow: [
         BoxShadow(

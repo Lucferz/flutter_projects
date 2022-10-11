@@ -1,0 +1,1 @@
+export 'package:login_tp07/services/auth_service.dart';
