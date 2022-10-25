@@ -1,0 +1,1 @@
+export 'package:login_tp07/models/products.dart';
